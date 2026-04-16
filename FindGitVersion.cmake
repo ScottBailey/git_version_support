@@ -17,13 +17,7 @@ if( NOT Git_FOUND)
   endif()
 endif()
 
-find_file(support_script GitVersionScript.cmake
-  HINTS ${CMAKE_CURRENT_LIST_DIR}
-  DOC   "Support script for generating Git version information."
-)
-if(NOT support_script)
-  message(FATAL_ERROR "Failed to find GitVersionScript.cmake in ${CMAKE_CURRENT_LIST_DIR}.")
-endif()
+set(support_script "${CMAKE_CURRENT_LIST_DIR}/GitVersionScript.cmake")
 
 
 function(generate_version_file
@@ -117,15 +111,7 @@ function(generate_version_file
 endfunction() # generate_version_file
 
 
-
-find_file(install_support_script GitVersionInstallScript.cmake
-  HINTS ${CMAKE_CURRENT_LIST_DIR}
-  DOC   "Support script for generating Git version install information."
-)
-if(NOT install_support_script)
-  message(FATAL_ERROR "Failed to find GitVersionInstallScript.cmake in ${CMAKE_CURRENT_LIST_DIR}.")
-endif()
-
+set(install_support_script "${CMAKE_CURRENT_LIST_DIR}/GitVersionInstallScript.cmake")
 
 set(FindGitVersion_cmake_dir "${CMAKE_CURRENT_LIST_DIR}")
 set(FindGitVersion_cmake_dir "${CMAKE_CURRENT_LIST_DIR}" PARENT_SCOPE)
